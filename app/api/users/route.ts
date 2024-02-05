@@ -2,6 +2,7 @@ import startDb from "@/app/lib/db";
 import UserModel from "@/app/models/userModel";
 import { NewUserRequest } from "@/app/types";
 import { NextResponse } from "next/server";
+import { hash } from "bcrypt";
 
 export const POST = async (req: Request) => {
   const body = (await req.json()) as NewUserRequest;

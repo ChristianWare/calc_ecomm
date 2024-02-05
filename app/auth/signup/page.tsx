@@ -37,7 +37,7 @@ export default function SignUp() {
       }).then(async (res) => {
         if (res.ok) {
           const result = await res.json();
-          console.log(result);
+          // console.log(result);
         }
         action.setSubmitting(false);
       });
