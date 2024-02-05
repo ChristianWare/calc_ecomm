@@ -11,5 +11,6 @@ export const POST = async (req: Request) => {
     ...body,
   });
 
+
   return NextResponse.json(newUser);
 };
