@@ -9,6 +9,7 @@ import crypto from "crypto";
 export const POST = async (req: Request) => {
   const body = (await req.json()) as NewUserRequest;
   await startDb();
+  
   const newUser = await UserModel.create({
     ...body,
   });
@@ -36,5 +37,5 @@ export const POST = async (req: Request) => {
     html: `<h1>Please verify your email by clicking on <a href=${verificationUrl}>this link</a></h1>`,
   });
 
-  return NextResponse.json(newUser);
+  return NextResponse.json({ message: "Please check your email!" });
 };

@@ -11,7 +11,7 @@ export const POST = async (req: Request) => {
     if (!isValidObjectId(userId) || !token) {
       return NextResponse.json(
         {
-          error: "Invalid request, userId and toekn is required!",
+          error: "Invalid request, userId and token is required!",
         },
         { status: 401 }
       );
@@ -33,7 +33,7 @@ export const POST = async (req: Request) => {
     if (!isMatched) {
       return NextResponse.json(
         {
-          error: "Invalid token, toekn doesn't match!",
+          error: "Invalid token, token doesn't match!",
         },
         { status: 401 }
       );

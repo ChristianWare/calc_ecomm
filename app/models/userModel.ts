@@ -1,12 +1,12 @@
-import { compare, genSalt, hash } from "bcrypt";
 import { Document, Model, Schema, model, models } from "mongoose";
+import { compare, genSalt, hash } from "bcrypt";
 
 interface UserDocument extends Document {
   email: string;
   name: string;
   password: string;
-  role: string;
-  avatar: { url: string; id: string };
+  role: "admin" | "user";
+  avatar?: { url: string; id: string };
   verified: boolean;
 }
 
@@ -47,6 +47,6 @@ userSchema.methods.comparePassword = async function (password) {
   }
 };
 
-const UserModel = models.user || model("User", userSchema);
+const UserModel = models.User || model("User", userSchema);
 
 export default UserModel as Model<UserDocument, {}, Method>;
