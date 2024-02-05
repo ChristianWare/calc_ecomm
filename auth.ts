@@ -1,5 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import { SignInCredentials } from "./app/types";
+import NextAuth from "next-auth/next";
 
 export const config = {
   providers: [
@@ -11,7 +12,7 @@ export const config = {
         //send request to your api route where you can sign in as user and send error or success response to this function.
 
         const { user, error } = await fetch(
-          "http://localhost:3000/api/users.signin",
+          "http://localhost:3000/api/users/signin",
           {
             method: "POST",
             body: JSON.stringify({ email, password }),
@@ -25,3 +26,10 @@ export const config = {
     }),
   ],
 };
+
+export const {
+  handlers: { GET, POST },
+  auth,
+  signIn,
+  signOut,
+} = NextAuth(config);
