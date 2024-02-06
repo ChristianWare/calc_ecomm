@@ -12,23 +12,20 @@ export const POST = async (req: Request) => {
 
   await startDb();
   const user = await UserModel.findOne({ email });
-  if (!user)
-    return NextResponse.json({
-      error: "Email/Password mismmatch!",
-    });
+  if (!user) return NextResponse.json({ error: "Email/Password mismatch!" });
 
   const passwordMatch = await user.comparePassword(password);
   if (!passwordMatch)
-    return NextResponse.json({
-      error: "Email/Password mismmatch!",
-    });
+    return NextResponse.json({ error: "Email/Password mismatch!" });
 
   return NextResponse.json({
     user: {
       id: user._id.toString(),
+      email: user.email,
       name: user.name,
       avatar: user.avatar?.url,
       role: user.role,
+      verified: user.verified,
     },
   });
 };

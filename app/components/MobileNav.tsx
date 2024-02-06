@@ -12,6 +12,7 @@ import { PowerIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
 import useAuth from "../hooks/useAuth";
 import { MenuItems } from "../types";
+import SignOutButton from "./SignOutButton";
 
 interface Props {
   open: boolean;
@@ -58,10 +59,12 @@ export function MobileNav({ open, onClose, menuItems }: Props) {
 
           {loggedIn ? (
             <ListItem>
-              <ListItemPrefix>
-                <PowerIcon className='h-5 w-5' />
-              </ListItemPrefix>
-              Sign Out
+              <SignOutButton>
+                <ListItemPrefix>
+                  <PowerIcon className='h-5 w-5' />
+                </ListItemPrefix>
+                Sign Out
+              </SignOutButton>
             </ListItem>
           ) : (
             <div className='flex items-center'>
