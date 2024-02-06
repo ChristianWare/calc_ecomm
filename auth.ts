@@ -2,10 +2,18 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { SignInCredentials } from "./app/types";
 import NextAuth from "next-auth/next";
 
-export const config = {
+
+export const authConfig = {
   providers: [
     CredentialsProvider({
-      credentials: {},
+      credentials: {
+        email: {
+          type: "email",
+        },
+        password: {
+          type: "password",
+        },
+      },
       async authorize(credentials, request) {
         const { email, password } = credentials as SignInCredentials;
 
@@ -27,9 +35,13 @@ export const config = {
   ],
 };
 
-export const {
-  handlers: { GET, POST },
-  auth,
-  signIn,
-  signOut,
-} = NextAuth(config);
+// export const {
+//   handler,
+//   auth,
+//   signIn,
+//   signOut,
+// } = NextAuth(authConfig);
+
+const handler = NextAuth(authConfig);
+
+export { handler as GET, handler as POST };
