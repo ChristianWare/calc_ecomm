@@ -64,23 +64,24 @@ export default function NavUI({ cartItemsCount }: Props) {
           </Link>
           <div className='hidden lg:flex gap-2 items-center'>
             <CartIcon cartItems={cartItemsCount} />
-            {/* {loggedIn ? (
+            {loggedIn ? (
               <ProfileMenu menuItems={menuItems} />
             ) : loading ? (
-              <Spinner />
-            ) : ( */}
-            <>
-              <Link className='px-4 py-1' href='/auth/signin'>
-                Sign in
-              </Link>
-              <Link
-                className='bg-blue-500 text-white px-4 py-1 rounded'
-                href='/auth/signup'
-              >
-                Sign up
-              </Link>
-            </>
-            {/* )} */}
+              // <Spinner />
+              <div>Loading</div>
+            ) : (
+              <>
+                <Link className='px-4 py-1' href='/auth/signin'>
+                  Sign in
+                </Link>
+                <Link
+                  className='bg-blue-500 text-white px-4 py-1 rounded'
+                  href='/auth/signup'
+                >
+                  Sign up
+                </Link>
+              </>
+            )}
           </div>
 
           <div className='lg:hidden flex items-center space-x-2'>
