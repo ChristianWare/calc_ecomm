@@ -2,7 +2,6 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import { SignInCredentials } from "./app/types";
 import NextAuth from "next-auth/next";
 
-
 export const authConfig = {
   providers: [
     CredentialsProvider({
@@ -27,7 +26,7 @@ export const authConfig = {
           }
         ).then(async (res) => await res.json());
 
-        if (error) throw new Error(error);
+        if (error) null;
 
         return { id: user.id };
       },
