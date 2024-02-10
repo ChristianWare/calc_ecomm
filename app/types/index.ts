@@ -10,7 +10,21 @@ export interface NewUserRequest {
   password: string;
 }
 
+export interface SignInCredentials {
+  email: string;
+  password: string;
+}
+
 export interface EmailVerifyRequest {
   token: string;
   userId: string;
+}
+
+export interface SessionUserProfile {
+  id: string;
+  name: string;
+  email: string;
+  avatar?: string;
+  role: "user" | "admin";
+  verified: boolean;
 }
