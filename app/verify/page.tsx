@@ -34,7 +34,7 @@ export default function Verify(props: Props) {
 
       router.replace("/");
     });
-  }, []);
+  }, [router, token, userId]);
 
   if (!token || !userId) return notFound();
   return (
