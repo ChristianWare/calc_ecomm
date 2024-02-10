@@ -39,6 +39,8 @@ export default function SignIn() {
         redirect: false,
       });
 
+      console.log(signInRes)
+
       if (signInRes?.error === "CredentialsSignin") {
         toast.error("Email/Password mismatch!");
       }
