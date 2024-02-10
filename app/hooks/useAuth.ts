@@ -1,3 +1,4 @@
+import { useSession } from "next-auth/react";
 
 interface Auth {
   loading: boolean;
@@ -6,9 +7,11 @@ interface Auth {
 }
 
 export default function useAuth(): Auth {
+  const session = useSession();
+  console.log(session);
   return {
-    loading: false,
-    loggedIn: false,
+    loading: session.status === 'loading',
+    loggedIn: session.status === 'authenticated',
     isAdmin: false,
   };
 }
