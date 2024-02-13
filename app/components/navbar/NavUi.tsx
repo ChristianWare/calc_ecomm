@@ -11,15 +11,14 @@ import {
 import { Bars3Icon, XMarkIcon, HeartIcon } from "@heroicons/react/24/outline";
 import ProfileMenu from "../ProfileMenu";
 import { MobileNav } from "../MobileNav";
-// import CartIcon from "../CartIcon";
+import CartIcon from "./CartIcon";
 import {
   UserCircleIcon,
   ShoppingBagIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 import useAuth from "@/app/hooks/useAuth";
-// import SearchForm from "../SearchForm";
-import CartIcon from "./CartIcon";
+import SearchForm from "../SearchForm";
 
 interface Props {
   cartItemsCount: number;
@@ -64,13 +63,12 @@ export default function NavUI({ cartItemsCount, avatar }: Props) {
 
           <div className='flex-1 flex justify-center'>
             <div className='md:w-96 w-full md:mx-0 mx-4 '>
-              {/* <SearchForm submitTo='/search?query=' /> */}
+              <SearchForm submitTo='/search?query=' />
             </div>
           </div>
 
-          <div className='hidden lg:flex gap-2 items-center'>
-            <CartIcon cartItems={cartItemsCount} />
-          </div>
+          <div className='lg:flex gap-2 items-center'>
+            {/* <CartIcon cartItems={cartItemsCount} /> */}
             {loggedIn ? (
               <ProfileMenu menuItems={menuItems} avatar={avatar} />
             ) : loading ? (
@@ -88,6 +86,7 @@ export default function NavUI({ cartItemsCount, avatar }: Props) {
                 </Link>
               </>
             )}
+          </div>
 
           <div className='lg:hidden flex items-center space-x-2'>
             <CartIcon cartItems={cartItemsCount} />

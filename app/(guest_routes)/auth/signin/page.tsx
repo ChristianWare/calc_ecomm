@@ -36,10 +36,10 @@ export default function SignIn() {
     onSubmit: async (values, actions) => {
       const signInRes = await signIn("credentials", {
         ...values,
-        redirect: false,
+        // redirect: false,
       });
 
-      console.log(signInRes)
+      console.log(signInRes);
 
       if (signInRes?.error === "CredentialsSignin") {
         toast.error("Email/Password mismatch!");
