@@ -36,7 +36,7 @@ export default function SignIn() {
     onSubmit: async (values, actions) => {
       const signInRes = await signIn("credentials", {
         ...values,
-        // redirect: false,
+        redirect: false,
       });
 
       console.log(signInRes);
